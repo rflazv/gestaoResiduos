@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'c08b7f62-472b-42f7-8c50-7f45425fad54'
   imageRepository: 'rafaelazevedo'
   containerRegistry: 'gestaoresiduos.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/DockerFile'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'  # Corrigido para 'Dockerfile' (com "d" minúsculo)
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
@@ -40,7 +40,7 @@ stages:
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
+        dockerfile: $(dockerfilePath)  # Referenciando o Dockerfile corrigido
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
